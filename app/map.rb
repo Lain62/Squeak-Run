@@ -40,6 +40,7 @@ class Map
         load_entity_at_layer('Object') 
         load_entity_at_layer('Collision') 
         load_entity_at_layer('Safe') 
+        load_entity_at_layer('Hazard') 
         load_cattimer
     end
 

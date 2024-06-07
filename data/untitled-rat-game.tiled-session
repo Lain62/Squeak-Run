@@ -5,38 +5,60 @@
     },
     "activeFile": "maps/Level_1.tmx",
     "expandedProjectPaths": [
+        "maps",
         ".",
-        "tileset",
-        "maps"
+        "tileset"
     ],
     "fileStates": {
         "maps/Level_1.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 495.5,
-                "y": 683.5
+                "x": 480.5,
+                "y": 411.5
             }
         },
         "maps/Level_2.tmx": {
-            "scale": 0.35624999999999996,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                4,
+                2,
+                3,
+                5
+            ],
+            "scale": 0.33,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1275.7894736842106,
-                "y": 635.7894736842104
+                "x": 898.4848484848483,
+                "y": 943.939393939394
+            }
+        },
+        "maps/Level_3.tmx": {
+            "expandedObjectLayers": [
+                4,
+                5
+            ],
+            "scale": 0.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 957,
+                "y": 777
             }
         },
         "maps/untitled-test.tmx": {
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 957,
+                "x": 959,
                 "y": 639
             }
+        },
+        "tileset/Atlas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tileset/tile_test.tsx": {
             "scaleInDock": 1,
@@ -47,19 +69,21 @@
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 40,
+    "map.width": 30,
     "openFiles": [
-        "tileset/tile_test.tsx",
         "maps/untitled-test.tmx",
         "maps/Level_1.tmx",
-        "maps/Level_2.tmx"
+        "maps/Level_2.tmx",
+        "tileset/Atlas.tsx",
+        "tileset/tile_test.tsx"
     ],
     "project": "untitled-rat-game.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "tileset/tile_test.tsx",
-        "maps/untitled-test.tmx",
         "maps/Level_2.tmx",
+        "maps/untitled-test.tmx",
+        "tileset/tile_test.tsx",
+        "tileset/Atlas.tsx",
         "maps/Level_1.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

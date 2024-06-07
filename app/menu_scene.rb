@@ -14,6 +14,16 @@ class MenuScene
                 goto: :game,
                 current_map_id: 1
             },
+            {
+                name: "Level 2",
+                goto: :game,
+                current_map_id: 2
+            },
+            {
+                name: "Level 3",
+                goto: :game,
+                current_map_id: 3
+            },
         ]
         @current_choice = 0
     end

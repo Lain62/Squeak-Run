@@ -72,7 +72,10 @@ class Player
             Geometry.intersect_rect?(self, object)
         end
 
+        outputs.debug << "#{state.game.entity_group.hazards}"
+
         if inside_hazard
+            state.game.entity_group.player.cheese_status = :ungrabbed
             @status = :death
         end
     end
@@ -154,6 +157,7 @@ class Player
         input_left_right
         jump
         safe_zone_collision
+        hazard_collision
         collision
         animation
         @x += @dx

@@ -39,6 +39,7 @@ class PlayerSpawn < Entity
         end
 
         if state.game.entity_group.player.status == :death && state.game.entity_group.player.respawn_point == 0
+            state.game.entity_group.player.cheese_status = :ungrabbed
             state.game.entity_group.player.x = @object.x
             state.game.entity_group.player.y = @object.y
             state.game.entity_group.player.status = :default
@@ -88,6 +89,7 @@ class PlayerFlag < Entity
             end
 
             if state.game.entity_group.player.status == :death && state.game.entity_group.player.respawn_point == @flag_number
+                state.game.entity_group.player.cheese_status = :ungrabbed
                 state.game.entity_group.player.x = @object.x
                 state.game.entity_group.player.y = @object.y
                 state.game.entity_group.player.status = :default
@@ -148,6 +150,7 @@ class CatTimer
 
         if @timer <= 0
             @timer = @timer_max
+            state.game.entity_group.player.cheese_status = :ungrabbed
             state.game.entity_group.player.status = :death
         end
 
@@ -182,6 +185,11 @@ class Cheese < Entity
                 state.game.entity_group.player.cheese_status = :grabbed
                 @hitbox = false
             end
+        end
+        if state.game.entity_group.player.cheese_status == :ungrabbed
+            @w = 64
+            @h = 64
+            @hitbox = true
         end
     end
 

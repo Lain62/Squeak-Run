@@ -7,8 +7,8 @@ class MapManager
         @maps = [
             Map.new("data/maps/untitled-test.tmx"),
             Map.new("data/maps/Level_1.tmx"),
-            Map.new("data/maps/Level_1.tmx"),
-            Map.new("data/maps/Level_1.tmx"),
+            Map.new("data/maps/Level_2.tmx"),
+            Map.new("data/maps/Level_3.tmx"),
             Map.new("data/maps/Level_1.tmx"),
             Map.new("data/maps/Level_1.tmx"),
             Map.new("data/maps/Level_1.tmx")
