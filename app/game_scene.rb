@@ -15,6 +15,13 @@ class GameScene
     end
 
     def draw
+        outputs.sprites << {
+            x: 0,
+            y: 0,
+            w: 1280,
+            h: 720,
+            path: "images/byfreepik.jpg"
+        }
         player_offset = [0, 0]
         if state.game.entity_group.player != nil
           player_offset = [state.game.entity_group.player.x + state.game.entity_group.player.w / 2, state.game.entity_group.player.y + state.game.entity_group.player.h / 2]

@@ -1,3 +1,4 @@
+Atlas = "sprites/tiles/Atlas.png"
 require 'lib/tiled/tiled.rb'
 require 'app/entities.rb'
 require 'app/draw_group.rb'

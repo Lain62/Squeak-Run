@@ -19,7 +19,7 @@ class SceneManager
         when :game then @game_scene.update
         when :menu then @menu_scene.update
         when :win then @win_scene.update
-        else then @error_scene.update
+        else @error_scene.update
         end
     end
 
@@ -28,7 +28,7 @@ class SceneManager
         when :game then @game_scene.draw
         when :menu then @menu_scene.draw
         when :win then @win_scene.draw
-        else then @error_scene.draw
+        else @error_scene.draw
         end
     end
 end

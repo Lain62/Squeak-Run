@@ -23,7 +23,11 @@ class PlayerSpawn < Entity
     def initialize(object)
         super(object)
         @object = object
-        @path = "sprites/square/green.png"
+        @path = Atlas
+        @tile_w = 64
+        @tile_h = 64
+        @tile_x = 0 * @tile_w
+        @tile_y = 1 * @tile_h
     end
 
     def update
@@ -53,7 +57,11 @@ class PlayerFlag < Entity
         @flag_number = flag_number
         @object = object
         @status = "untouched"
-        @path = "sprites/square/red.png"
+        @path = Atlas
+        @tile_w = 64
+        @tile_h = 64
+        @tile_x = 2 * @tile_w
+        @tile_y = 0 * @tile_h
         @resetted = false
     end
 
@@ -61,10 +69,12 @@ class PlayerFlag < Entity
         return if state.game.entity_group.player == nil
 
         if @status == "touched"
-            @path = "sprites/square/violet.png"
+            @tile_x = 2 * @tile_w
+            @tile_y = 1 * @tile_h
         end
         if @status == "untouched"
-            @path = "sprites/square/red.png"
+            @tile_x = 2 * @tile_w
+            @tile_y = 0 * @tile_h
         end
         if @hitbox == true 
             if Geometry.intersect_rect?(state.game.entity_group.player, self) && @status == "untouched"
@@ -112,7 +122,11 @@ class CatTimer
             y: meter_pos.y,
             w: timer_in_second * @width_multiplier,
             h: 20,
-            path: "sprites/square/red.png"
+            path: Atlas,
+            tile_h: 64,
+            tile_w: 64,
+            tile_x: 2 * 64,
+            tile_y: 2 * 64
         }
     end
 
@@ -122,7 +136,11 @@ class CatTimer
             y: meter_pos.y,
             w: @timer_max / 60 * @width_multiplier,
             h: 20,
-            path: "sprites/square/white.png"
+            path: Atlas,
+            tile_h: 64,
+            tile_w: 64,
+            tile_x: 3 * 64,
+            tile_y: 2 * 64
         }
     end
 
@@ -149,7 +167,11 @@ class Cheese < Entity
     def initialize(object)
         super(object)
         @object = object
-        @path = "sprites/square/yellow.png"
+        @path = Atlas
+        @tile_w = 64
+        @tile_h = 64
+        @tile_x = 1 * @tile_w
+        @tile_y = 1 * @tile_h
     end
 
     def update

@@ -20,9 +20,51 @@ class Player
         @respawn_point = 0
         @w = 64
         @h = 64
-        @path = "sprites/circle/blue.png"
+        @path = Atlas
+        @tile_x = 0
+        @tile_y = 0
+        @tile_w = 64
+        @tile_h = 64
         @cheese_status = :ungrabbed
         @win_status = :default
+    end
+
+    def animation
+        case @cheese_status
+        when :ungrabbed
+            if @dx > 0 
+                @flip_horizontally = false
+            end
+    
+            if @dx < 0 
+                @flip_horizontally = true
+            end
+    
+            if @dy > 0
+                @tile_x = 1 * @tile_w
+                @tile_y = 0 * @tile_h
+            elsif @dy <= 0
+                @tile_x = 0 * @tile_w
+                @tile_y = 0 * @tile_h
+            end
+        when :grabbed
+            if @dx > 0 
+                @flip_horizontally = false
+            end
+    
+            if @dx < 0 
+                @flip_horizontally = true
+            end
+    
+            if @dy > 0
+                @tile_x = 3 * @tile_w
+                @tile_y = 0 * @tile_h
+            elsif @dy <= 0
+                @tile_x = 3 * @tile_w
+                @tile_y = 1 * @tile_h
+            end
+        end
+       
     end
 
     def hazard_collision
@@ -113,6 +155,7 @@ class Player
         jump
         safe_zone_collision
         collision
+        animation
         @x += @dx
         @y += @dy
     end
