@@ -20,7 +20,7 @@ class GameScene
             y: 0,
             w: 1280,
             h: 720,
-            path: "images/byfreepik.jpg"
+            path: "images/background.png"
         }
         player_offset = [0, 0]
         if state.game.entity_group.player != nil
