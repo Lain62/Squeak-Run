@@ -1,4 +1,4 @@
-Atlas = "sprites/tiles/Atlas.png"
+Atlas = "sprites/tiles/atlas.png"
 require 'lib/tiled/tiled.rb'
 require 'app/entities.rb'
 require 'app/draw_group.rb'
@@ -9,6 +9,8 @@ require 'app/menu_scene.rb'
 require 'app/win_scene.rb'
 require 'app/error_scene.rb'
 require 'app/tutorial_scene.rb'
+require 'app/about_scene.rb'
+require 'app/audio_manager.rb'
 require 'app/scene_manager.rb'
 require 'app/map.rb'
 require 'app/player.rb'

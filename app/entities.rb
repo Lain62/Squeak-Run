@@ -89,7 +89,7 @@ class PlayerFlag < Entity
             end
 
             if state.game.entity_group.player.status == :death && state.game.entity_group.player.respawn_point == @flag_number
-                state.game.entity_group.player.cheese_status = :ungrabbed
+                # state.game.entity_group.player.cheese_status = :ungrabbed
                 state.game.entity_group.player.x = @object.x
                 state.game.entity_group.player.y = @object.y
                 state.game.entity_group.player.status = :default
@@ -105,7 +105,7 @@ class CatTimer
     attr_gtk
     def initialize
         self.args = $args
-        @timer_max = 60 * 10
+        @timer_max = 60 * 6
         @timer = @timer_max
         @width_multiplier = 20
     end
@@ -115,14 +115,14 @@ class CatTimer
     end
 
     def meter_pos
-        [1280 / 2 - @timer_max / 60 * @width_multiplier / 2, 680]
+        [1280 / 2 - @timer_max / 60 * @width_multiplier / 2 * 2, 680]
     end
 
     def meter
         {
             x: meter_pos.x,
             y: meter_pos.y,
-            w: timer_in_second * @width_multiplier,
+            w: timer_in_second * @width_multiplier * 2,
             h: 20,
             path: Atlas,
             tile_h: 64,
@@ -136,7 +136,7 @@ class CatTimer
         {
             x: meter_pos.x,
             y: meter_pos.y,
-            w: @timer_max / 60 * @width_multiplier,
+            w: @timer_max / 60 * @width_multiplier * 2,
             h: 20,
             path: Atlas,
             tile_h: 64,

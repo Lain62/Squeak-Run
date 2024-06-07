@@ -7,7 +7,7 @@ class MenuScene
             {
                 name: "TUTORIAL",
                 goto: :tutorial,
-                current_map_id: 1
+                current_map_id: 0
             },
             {
                 name: "Level 1",
@@ -24,6 +24,21 @@ class MenuScene
                 goto: :game,
                 current_map_id: 3
             },
+            {
+                name: "Level 4",
+                goto: :game,
+                current_map_id: 4
+            },
+            {
+                name: "Level 5",
+                goto: :game,
+                current_map_id: 5
+            },
+            {
+                name: "About",
+                goto: :about,
+                current_map_id: 0
+            }
         ]
         @current_choice = 0
     end
@@ -50,7 +65,7 @@ class MenuScene
             y: 0,
             w: 1280,
             h: 720,
-            path: "images/Title.png"
+            path: "images/title.png"
         }
         outputs.labels << {
             x: 1280 / 2,

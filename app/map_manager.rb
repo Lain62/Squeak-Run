@@ -9,9 +9,8 @@ class MapManager
             Map.new("data/maps/Level_1.tmx"),
             Map.new("data/maps/Level_2.tmx"),
             Map.new("data/maps/Level_3.tmx"),
-            Map.new("data/maps/Level_1.tmx"),
-            Map.new("data/maps/Level_1.tmx"),
-            Map.new("data/maps/Level_1.tmx")
+            Map.new("data/maps/Level_4.tmx"),
+            Map.new("data/maps/Level_5.tmx")
         ]
         @current_map_id = 1
     end
