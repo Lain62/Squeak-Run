@@ -27,6 +27,22 @@ module RatGame
             @tile_h = 16
             @flip_horizontally = false
             @collision_blocks = []
+
+            # ANIMATION VARIABLES
+            @animation_walk = 0
+            @animation_walk_interval = 6
+            @animation_walk_frame = 0
+            @animation_walk_frame_max = 5
+
+            @animation_jump = 0
+            @animation_jump_interval = 4
+            @animation_jump_frame = 0
+            @animation_jump_frame_max = 4
+
+            @animation_falling = 0
+            @animation_falling_interval = 4
+            @animation_falling_frame = 0
+            @animation_falling_frame_max = 3
         end
 
         ###########
@@ -42,33 +58,83 @@ module RatGame
             end
         end
 
-        def animation_walk_loop
-            start_looping_at = 0
-            number_of_sprites = 4
-            sprites_interval = 4
-            sprite_loop = true
-
-            sprite_index = start_looping_at.frame_index(number_of_sprites, sprites_interval, sprite_loop)
-
-            sprite_index ||= 0
-
-            if @dx != 0 && @dy == 0
-                @tile_x = (2 * 16) + (sprite_index * 16)
-            elsif @dx == 0 && @dy == 0
+        def animation_idle
+            if is_idle?
                 @tile_x = 0
+                @tile_y = 0
+            end
+        end
+
+        def animation_walk
+            if is_walking?
+                @animation_walk += 1
+
+                if @animation_walk >= @animation_walk_interval
+                    @animation_walk = 0
+                    @animation_walk_frame += 1
+                end
+
+                if @animation_walk_frame >= @animation_walk_frame_max
+                    @animation_walk_frame = 0
+                end
+
+                @tile_x = @animation_walk_frame * 16
+                @tile_y = 0
+            else
+                @animation_walk = 0
+                @animation_walk_frame = 0
             end
         end
 
         def animation_jump
-            if @dy != 0
-                @tile_x = 1 * @tile_w
+            if is_jumping?
+                @animation_jump += 1
+
+                if @animation_jump >= @animation_jump_interval
+                    @animation_jump = 0
+                    @animation_jump_frame += 1
+                end
+
+                if @animation_jump_frame >= @animation_jump_frame_max
+                    @animation_jump_frame = @animation_jump_frame_max
+                end
+
+                @tile_x = @animation_jump_frame * 16
+                @tile_y = 3 * 16
+            else
+                @animation_jump = 0
+                @animation_jump_frame = 0
             end
         end
 
+        def animation_falling
+            if is_falling?
+                @animation_falling += 1
+
+                if @animation_falling >= @animation_falling_interval
+                    @animation_falling = 0
+                    @animation_falling_frame += 1
+                end
+
+                if @animation_falling_frame >= @animation_falling_frame_max
+                    @animation_falling_frame = @animation_falling_frame_max
+                end
+
+                @tile_x = @animation_falling_frame * 16 + 3 * 16
+                @tile_y = 3 * 16
+            else
+                @animation_falling = 0
+                @animation_falling_frame = 0
+            end
+        end
+
+
         def animation
             animation_flip_horizontally
-            animation_walk_loop
+            animation_idle
+            animation_walk
             animation_jump
+            animation_falling
         end
 
         ###########
@@ -214,6 +280,22 @@ module RatGame
         ###########
         # UTILS
         ###########
+
+        def is_idle?
+            if @dx == 0 && @dy == 0
+                return true
+            else
+                return false
+            end
+        end
+
+        def is_walking?
+            if @dx != 0
+                return true
+            else
+                return false
+            end
+        end
 
         def is_jumping?
             if @jump > 0
