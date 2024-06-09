@@ -1,6 +1,6 @@
 module RatGame
     class Level
-        attr_accessor :mouse, :collision_blocks, :safe_blocks, :entities, :width, :height, :cat_timer
+        attr_accessor :mouse, :collision_blocks, :safe_blocks, :entities, :width, :height, :cat_timer, :hazard_blocks
         def initialize(path)
             @data = Drogmo::Level.new(Globals.state.project.ogmo, path)
             @load_status = false
@@ -8,6 +8,7 @@ module RatGame
             @collision_blocks = []
             @safe_blocks = []
             @entities = []
+            @hazard_blocks = []
             @cat_timer = nil
             @width = 0
             @height = 0
@@ -48,6 +49,12 @@ module RatGame
             end
         end
 
+        def load_layer_hazard_blocks
+            @data.layers["hazard_blocks"].sprites.each do |object|
+                @hazard_blocks << Hazard.new(object)
+            end
+        end
+
         def load_width_height
             @width = @data.width
             @height = @data.height
@@ -63,6 +70,7 @@ module RatGame
             load_layer_object
             load_layer_safe_blocks
             load_layer_collision_blocks
+            load_layer_hazard_blocks
             load_cat_timer
         end
     end

@@ -31,6 +31,20 @@ module RatGame
             cat_timer.update
         end
 
+        def hazard_controller
+            return if !current_level.loaded?
+            return if mouse == nil
+            return if hazard_blocks == []
+
+            dieded = hazard_blocks.any? do |block|
+                Globals.geometry.intersect_rect?(block, mouse)
+            end
+
+            if dieded
+                mouse.kill
+            end
+        end
+
         def cat_timer
             if current_level.loaded?
                 current_level.cat_timer
@@ -58,6 +72,14 @@ module RatGame
         def entities
             if current_level.loaded?
                 current_level.entities
+            else
+                []
+            end
+        end
+
+        def hazard_blocks
+            if current_level.loaded?
+                current_level.hazard_blocks
             else
                 []
             end
@@ -112,6 +134,7 @@ module RatGame
             ui.update
             if current_level.loaded?
                 
+                hazard_controller
                 cat_timer_controller
             
                 entities.each do |entity|
