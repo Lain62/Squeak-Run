@@ -13,7 +13,7 @@ module RatGame
             @dxmovement = 0
             @dymovement = 0
             @gravity = 0
-            @gravity_max = 3
+            @gravity_max = 4
             @jump = 0
             @jump_max = 14
             @jump_power = 3
