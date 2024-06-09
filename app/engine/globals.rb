@@ -12,6 +12,10 @@ end
 
 module RatGame
     class Globals
+        def self.atlas
+            "content/sprites/squeakrunbranmomentyay.png"
+        end
+
         def self.outputs
             $args.outputs
         end

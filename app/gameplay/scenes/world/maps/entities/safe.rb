@@ -5,7 +5,7 @@ module RatGame
             @y = data.y
             @w = data.w
             @h = data.h
-            @path = data.path
+            @path = Globals.atlas
             @tile_x = data.tile_x
             @tile_y = data.tile_y
             @tile_w = data.tile_w
