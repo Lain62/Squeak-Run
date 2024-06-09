@@ -7,6 +7,9 @@ require "app/engine/solids.rb"
 require "app/gameplay/scenes/scene_manager.rb"
 
 require "app/gameplay/scenes/world/scene_world.rb"
+
+require "app/gameplay/scenes/world/lib/level.rb"
+
 require "app/gameplay/scenes/world/entities/mouse.rb"
 require "app/gameplay/scenes/world/entities/entity.rb"
 require "app/gameplay/scenes/world/entities/collision.rb"

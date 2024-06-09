@@ -19,19 +19,19 @@ module RatGame
         end
 
         def draw
-            case @current_scene
-            when :world then Globals.state.scene.world.draw
-            end
-
             Globals.outputs[:batch].transient!
             Globals.outputs[:batch].w = @width
             Globals.outputs[:batch].h = @height
 
+            case @current_scene
+            when :world then Globals.state.scene.world.draw
+            end
+
             Globals.outputs.sprites << {
-                x: Globals.state.scene_x,
-                y: Globals.state.scene_y,
-                w: Globals.state.scene_width,
-                h: Globals.state.scene_height,
+                x: Globals.state.scene.x,
+                y: Globals.state.scene.y,
+                w: Globals.state.scene.width,
+                h: Globals.state.scene.height,
                 path: :batch
             }
         end

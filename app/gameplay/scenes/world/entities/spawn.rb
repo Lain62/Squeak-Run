@@ -1,7 +1,8 @@
 module RatGame
     class Spawn < EntityWithSprites
-        def initialize(data)
+        def initialize(data, level)
             super(data)
+            @level = level
             @path = Globals.atlas
             @tile_x = 0
             @tile_y = 8 * 16
@@ -11,14 +12,15 @@ module RatGame
 
         def update
             super
-            if Globals::State.mouse == nil
-                Globals::State.mouse = Mouse.new(@x, @y)
+            if @level.mouse == nil
+                @level.mouse = Mouse.new(@x, @y, @level)
             end
         end
 
         def draw
             super
             Globals.outputs[:batch].sprites << self
+            
         end
     end
 end

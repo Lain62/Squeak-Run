@@ -1,7 +1,8 @@
 module RatGame
     class Cheese < EntityWithSprites
-        def initialize(data)
+        def initialize(data, level)
             super(data)
+            @level = level
             @path = Globals.atlas
             @tile_x = 0
             @tile_y = 11 * 16

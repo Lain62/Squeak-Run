@@ -1,7 +1,8 @@
 module RatGame
     class Mouse < Sprites
         attr_accessor :collision_blocks
-        def initialize(x, y)
+        def initialize(x, y, level)
+            @level = level
             @x = x
             @y = y
             @w = 16
@@ -26,7 +27,6 @@ module RatGame
             @tile_w = 16
             @tile_h = 16
             @flip_horizontally = false
-            @collision_blocks = []
 
             # ANIMATION VARIABLES
             @animation_walk = 0
@@ -219,7 +219,7 @@ module RatGame
         end
 
         def move_inside_wall
-            @collision_blocks.each do |block|
+            @level.collision_blocks.each do |block|
                 if Globals.geometry.intersect_rect?(block, {
                     x: hitbox.x,
                     y: hitbox.y,
@@ -314,7 +314,7 @@ module RatGame
         end
         
         def collide_at(pos)
-            @collision_blocks.any? do |block|
+            @level.collision_blocks.any? do |block|
                 Globals.geometry.intersect_rect?(block, {
                     x: pos.x,
                     y: pos.y,
@@ -325,7 +325,7 @@ module RatGame
         end
 
         def is_grounded?
-            @collision_blocks.any? do |block|
+            @level.collision_blocks.any? do |block|
                 Globals.geometry.intersect_rect?(block, {
                     x: hitbox.x,
                     y: hitbox.y - 1,
