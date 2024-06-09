@@ -65,55 +65,5 @@ module RatGame
                 $args.inputs.keyboard.key_down.x || $args.inputs.keyboard.key_down.k || $args.inputs.keyboard.key_down.escape
             end
         end
-
-        class State
-            def self.mouse
-                $args.state.globals.mouse
-            end
-
-            def self.mouse=(var)
-                $args.state.globals.mouse = var
-            end
-
-            def self.ogmo
-                $args.state.globals.ogmo
-            end
-
-            def self.ogmo=(var)
-                $args.state.globals.ogmo = var
-            end
-
-            def self.scene_x
-                $args.state.globals.scene_x
-            end
-
-            def self.scene_x=(var)
-                $args.state.globals.scene_x = var
-            end
-
-            def self.scene_y
-                $args.state.globals.scene_y
-            end
-
-            def self.scene_y=(var)
-                $args.state.globals.scene_y = var
-            end
-
-            def self.scene_width
-                $args.state.globals.scene_width
-            end
-
-            def self.scene_width=(var)
-                $args.state.globals.scene_width = var
-            end
-
-            def self.scene_height
-                $args.state.globals.scene_height
-            end
-
-            def self.scene_height=(var)
-                $args.state.globals.scene_height = var
-            end
-        end
     end
 end
