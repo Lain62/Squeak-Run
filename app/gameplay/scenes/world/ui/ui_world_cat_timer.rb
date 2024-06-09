@@ -12,7 +12,7 @@ module RatGame
                 h: 10,
                 path: Globals.atlas,
                 tile_x: 0,
-                tile_y: 14 * 16,
+                tile_y: 15 * 16,
                 tile_w: 16,
                 tile_h: 16,
                 primitive_marker: :sprite
@@ -21,6 +21,10 @@ module RatGame
         end
 
         def background
+            ycoords = 13 * 16
+            if timer.time < timer.time_max / 4
+                ycoords = 14 * 16
+            end
             {
                 x: 320 / 2 - 16 * 2,
                 y: 160,
@@ -28,7 +32,7 @@ module RatGame
                 h: 16,
                 path: Globals.atlas,
                 tile_x: 0,
-                tile_y: 13 * 16,
+                tile_y: ycoords,
                 tile_w: 16 * 4,
                 tile_h: 16,
                 primitive_marker: :sprite

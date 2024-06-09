@@ -68,8 +68,6 @@ module RatGame
         def update
             timer_update
             check_mouse
-
-            puts @status
         end
 
         def draw

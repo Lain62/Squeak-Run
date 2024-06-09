@@ -42,7 +42,6 @@ module RatGame
 
         def update
             super
-            # puts @hitbox_status
             if @level.mouse != nil
                 if @hitbox_status == true
                     if Globals.geometry.intersect_rect?(hitbox, @level.mouse)
