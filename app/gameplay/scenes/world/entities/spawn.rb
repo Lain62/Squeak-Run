@@ -23,7 +23,7 @@ module RatGame
 
             return if @level.mouse == nil
 
-            if @level.mouse.is_dead?
+            if @level.mouse.is_dead? && @level.mouse.spawn_point == 0
                 if ui.death.time == 1
                     @level.mouse.x = @x
                     @level.mouse.y = @y

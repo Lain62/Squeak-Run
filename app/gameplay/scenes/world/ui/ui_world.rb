@@ -15,13 +15,14 @@ module RatGame
 
 
         def update
-            @deathui.update
             @cat_timerui.update
+            @deathui.update
+            
         end
 
         def draw
-            @deathui.draw
             @cat_timerui.draw
+            @deathui.draw
         end
     end
 end

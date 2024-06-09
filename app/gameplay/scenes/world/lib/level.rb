@@ -37,7 +37,7 @@ module RatGame
                 when "cheese"
                     @entities << Cheese.new(object, self)
                 when "flag"
-                    @entities << Flag.new(object, self)
+                    @entities << Flag.new(object, self, @entities.length)
                 end
             end
         end

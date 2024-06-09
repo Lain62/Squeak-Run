@@ -1,5 +1,6 @@
 module RatGame
     class Mouse < Sprites
+        attr_accessor :spawn_point
         def initialize(x, y, level)
             @level = level
             @x = x
@@ -26,6 +27,7 @@ module RatGame
             @tile_w = 16
             @tile_h = 16
             @flip_horizontally = false
+            @spawn_point = 0
 
             # ANIMATION VARIABLES
             @animation_walk = 0
