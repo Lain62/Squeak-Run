@@ -1,6 +1,5 @@
 module RatGame
     class Mouse < Sprites
-        attr_accessor :collision_blocks
         def initialize(x, y, level)
             @level = level
             @x = x
@@ -30,22 +29,23 @@ module RatGame
 
             # ANIMATION VARIABLES
             @animation_walk = 0
-            @animation_walk_interval = 6
+            @animation_walk_interval = 10
             @animation_walk_frame = 0
             @animation_walk_frame_max = 5
 
             @animation_jump = 0
-            @animation_jump_interval = 4
+            @animation_jump_interval = 10
             @animation_jump_frame = 0
             @animation_jump_frame_max = 4
 
             @animation_falling = 0
-            @animation_falling_interval = 4
+            @animation_falling_interval = 10
             @animation_falling_frame = 0
             @animation_falling_frame_max = 3
 
             # status
             @cheese_status = :ungrabbed
+            @dead_status = false
         end
 
         ###########
@@ -321,11 +321,13 @@ module RatGame
 
         def update
             super
+            return if is_dead?
             move
         end
 
         def draw
             super
+            return if is_dead?
             animation
             Globals.outputs.debug << "#{@jump_count}"
             Globals.outputs[:batch].sprites << self
@@ -382,6 +384,24 @@ module RatGame
                 return true
             else
                 return false
+            end
+        end
+
+        def is_dead?
+            @dead_status
+        end
+
+        def kill
+            @dead_status = true
+        end
+
+        def revive
+            @dead_status = false
+        end
+
+        def is_safe?
+            @level.safe_blocks.any? do |block|
+                Globals.geometry.intersect_rect?(block, hitbox)
             end
         end
         

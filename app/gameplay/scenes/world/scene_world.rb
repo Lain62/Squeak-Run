@@ -5,6 +5,38 @@ module RatGame
             @levels = {
                 test_level: Level.new("content/levels/test_level.json")
             }
+            @ui = UiWorld.new
+        end
+
+        def ui
+            @ui
+        end
+
+        def cat_timer_controller
+            return if !current_level.loaded?
+            return if mouse == nil
+
+            if mouse.is_safe?
+                cat_timer.rise
+            elsif mouse.is_dead?
+                cat_timer.reset
+            else
+                cat_timer.start
+            end
+
+            if cat_timer.time == 1
+                mouse.kill
+            end
+
+            cat_timer.update
+        end
+
+        def cat_timer
+            if current_level.loaded?
+                current_level.cat_timer
+            else
+                nil
+            end
         end
 
         def width
@@ -73,29 +105,41 @@ module RatGame
         end
 
         def update
-            load_current_level
-            entities.each do |entity|
-                entity.update
+            if !current_level.loaded?
+                load_current_level
             end
 
-            mouse.update if mouse != nil
+            ui.update
+            if current_level.loaded?
+                
+                cat_timer_controller
+            
+                entities.each do |entity|
+                    entity.update
+                end
+    
+                mouse.update if mouse != nil
+            end
+
         end
 
         def draw
-            
-            entities.each do |entity|
-                entity.draw
+            ui.draw
+            if current_level.loaded?
+                entities.each do |entity|
+                    entity.draw
+                end
+    
+                safe_blocks.each do |block|
+                    block.draw
+                end
+    
+                collision_blocks.each do |block|
+                    block.draw
+                end
+    
+                mouse.draw if mouse != nil
             end
-
-            safe_blocks.each do |block|
-                block.draw
-            end
-
-            collision_blocks.each do |block|
-                block.draw
-            end
-
-            mouse.draw if mouse != nil
         end
     end
 end

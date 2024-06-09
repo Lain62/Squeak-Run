@@ -11,10 +11,24 @@ module RatGame
 
         end
 
+        def ui
+            Globals.state.scene.world.ui
+        end
+
         def update
             super
             if @level.mouse == nil
                 @level.mouse = Mouse.new(@x, @y, @level)
+            end
+
+            return if @level.mouse == nil
+
+            if @level.mouse.is_dead?
+                if ui.death.time == 1
+                    @level.mouse.x = @x
+                    @level.mouse.y = @y
+                    @level.mouse.revive
+                end
             end
         end
 

@@ -18,6 +18,11 @@ module RatGame
             Globals.outputs[:batch].transient!
             Globals.outputs[:batch].w = Globals.state.scene.camera.w
             Globals.outputs[:batch].h = Globals.state.scene.camera.h
+
+            Globals.outputs[:ui].transient!
+            Globals.outputs[:ui].w = 320
+            Globals.outputs[:ui].h = 180
+            
             case @current_scene
             when :world then Globals.state.scene.world.draw
             end
@@ -28,6 +33,14 @@ module RatGame
                 w: Globals.state.scene.camera.w * 4,
                 h: Globals.state.scene.camera.h * 4,
                 path: :batch
+            }
+
+            Globals.outputs.sprites << {
+                x: 0,
+                y: 0,
+                w: 320 * 4,
+                h: 180 * 4,
+                path: :ui
             }
         end
     end

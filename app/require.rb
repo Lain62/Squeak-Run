@@ -9,7 +9,12 @@ require "app/gameplay/scenes/scene_camera.rb"
 
 require "app/gameplay/scenes/world/scene_world.rb"
 
+require "app/gameplay/scenes/world/ui/ui_world.rb"
+require "app/gameplay/scenes/world/ui/ui_world_death.rb"
+require "app/gameplay/scenes/world/ui/ui_world_cat_timer.rb"
+
 require "app/gameplay/scenes/world/lib/level.rb"
+require "app/gameplay/scenes/world/lib/cat_timer.rb"
 
 require "app/gameplay/scenes/world/entities/mouse.rb"
 require "app/gameplay/scenes/world/entities/entity.rb"
