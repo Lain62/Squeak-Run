@@ -16,6 +16,12 @@ module RatGame
             @load_status
         end
 
+        def load_layer_safe_blocks
+            @data.layers["safe_blocks"].sprites.each do |object|
+                @safe_blocks << Safe.new(object)
+            end
+        end
+
         def load_layer_object
             @data.layers["object"].entities.each do |object|
                 case object.name
@@ -25,6 +31,8 @@ module RatGame
                     @entities << Spring.new(object, self)
                 when "cheese"
                     @entities << Cheese.new(object, self)
+                when "flag"
+                    @entities << Flag.new(object, self)
                 end
             end
         end
@@ -48,6 +56,7 @@ module RatGame
             @load_status = true
             load_width_height
             load_layer_object
+            load_layer_safe_blocks
             load_layer_collision_blocks
         end
     end

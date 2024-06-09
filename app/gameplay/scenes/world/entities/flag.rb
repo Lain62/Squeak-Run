@@ -5,7 +5,7 @@ module RatGame
             @level = level
             @path = Globals.atlas
             @tile_x = 0
-            @tile_y = 11 * 16
+            @tile_y = 9 * 16
             @tile_w = 16
             @tile_h = 16
         end

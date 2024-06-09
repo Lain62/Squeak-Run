@@ -222,6 +222,7 @@ module RatGame
 
         def move_jump_by(amount)
             @gravity = 0
+            @dymovement = 0
             move_y(amount)
         end
 

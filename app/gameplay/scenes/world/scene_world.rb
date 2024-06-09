@@ -87,6 +87,10 @@ module RatGame
                 entity.draw
             end
 
+            safe_blocks.each do |block|
+                block.draw
+            end
+
             collision_blocks.each do |block|
                 block.draw
             end

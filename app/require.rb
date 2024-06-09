@@ -11,7 +11,6 @@ require "app/gameplay/scenes/world/scene_world.rb"
 
 require "app/gameplay/scenes/world/lib/level.rb"
 
-require "app/gameplay/scenes/world/entities/flag.rb"
 require "app/gameplay/scenes/world/entities/mouse.rb"
 require "app/gameplay/scenes/world/entities/entity.rb"
 require "app/gameplay/scenes/world/entities/collision.rb"
@@ -20,3 +19,4 @@ require "app/gameplay/scenes/world/entities/entity_with_sprites.rb"
 require "app/gameplay/scenes/world/entities/spawn.rb"
 require "app/gameplay/scenes/world/entities/spring.rb"
 require "app/gameplay/scenes/world/entities/cheese.rb"
+require "app/gameplay/scenes/world/entities/flag.rb"
