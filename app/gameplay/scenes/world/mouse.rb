@@ -20,7 +20,7 @@ module RatGame
             @jump_count = 0
             @jump_count_max = 2
             @speed = 1.2
-            @path = "content/sprites/mouse.png"
+            @path = Globals.atlas
             @tile_x = 0
             @tile_y = 0
             @tile_w = 16
@@ -32,6 +32,7 @@ module RatGame
         ###########
         # ANIMATION
         ###########
+        # TODO: REIMPLEMENT THE ANIMATION WALK LOOP AND ANIMATION JUMP WITH YOUR OWN METHOD
 
         def animation_flip_horizontally
             if @dx > 0
@@ -90,11 +91,11 @@ module RatGame
         end
 
         def move_gravity
-            if !grounded && @jump == 0
+            if !is_grounded? && @jump == 0
                 @gravity += 0.25 unless @gravity >= @gravity_max
                 @jump_count = 1 if @jump_count > 1
                 @dymovement = -@gravity
-            elsif grounded && @jump == 0
+            elsif is_grounded? && @jump == 0
                 @jump_count = @jump_count_max
                 @gravity = 0
                 @dymovement = 0
@@ -206,13 +207,29 @@ module RatGame
         def draw
             super
             animation
-            Globals.outputs.debug << "#{@dymovement}"
+            Globals.outputs.debug << "#{is_falling?}"
             Globals.outputs[:batch].sprites << self
         end
 
         ###########
         # UTILS
         ###########
+
+        def is_jumping?
+            if @jump > 0
+                return true
+            else
+                return false
+            end
+        end
+
+        def is_falling?
+            if @gravity > 0
+                return true
+            else
+                return false
+            end
+        end
         
         def collide_at(pos)
             @collision_blocks.any? do |block|
@@ -225,7 +242,7 @@ module RatGame
             end
         end
 
-        def grounded
+        def is_grounded?
             @collision_blocks.any? do |block|
                 Globals.geometry.intersect_rect?(block, {
                     x: hitbox.x,
