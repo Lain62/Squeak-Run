@@ -43,6 +43,9 @@ module RatGame
             @animation_falling_interval = 4
             @animation_falling_frame = 0
             @animation_falling_frame_max = 3
+
+            # status
+            @cheese_status = :ungrabbed
         end
 
         ###########
@@ -59,14 +62,17 @@ module RatGame
         end
 
         def animation_idle
-            if is_idle?
+            if is_idle? && !has_cheese?
                 @tile_x = 0
                 @tile_y = 0
+            elsif is_idle? && has_cheese?
+                @tile_x = 0
+                @tile_y = 1 * 16
             end
         end
 
         def animation_walk
-            if is_walking?
+            if is_walking? && !has_cheese?
                 @animation_walk += 1
 
                 if @animation_walk >= @animation_walk_interval
@@ -80,6 +86,20 @@ module RatGame
 
                 @tile_x = @animation_walk_frame * 16
                 @tile_y = 0
+            elsif is_walking? && has_cheese?
+                @animation_walk += 1
+
+                if @animation_walk >= @animation_walk_interval
+                    @animation_walk = 0
+                    @animation_walk_frame += 1
+                end
+
+                if @animation_walk_frame >= @animation_walk_frame_max
+                    @animation_walk_frame = 0
+                end
+
+                @tile_x = @animation_walk_frame * 16
+                @tile_y = 1 * 16
             else
                 @animation_walk = 0
                 @animation_walk_frame = 0
@@ -87,7 +107,7 @@ module RatGame
         end
 
         def animation_jump
-            if is_jumping?
+            if is_jumping? && !has_cheese?
                 @animation_jump += 1
 
                 if @animation_jump >= @animation_jump_interval
@@ -101,6 +121,20 @@ module RatGame
 
                 @tile_x = @animation_jump_frame * 16
                 @tile_y = 3 * 16
+            elsif is_jumping? && has_cheese?
+                @animation_jump += 1
+
+                if @animation_jump >= @animation_jump_interval
+                    @animation_jump = 0
+                    @animation_jump_frame += 1
+                end
+
+                if @animation_jump_frame >= @animation_jump_frame_max
+                    @animation_jump_frame = @animation_jump_frame_max
+                end
+
+                @tile_x = @animation_jump_frame * 16
+                @tile_y = 2 * 16
             else
                 @animation_jump = 0
                 @animation_jump_frame = 0
@@ -108,7 +142,7 @@ module RatGame
         end
 
         def animation_falling
-            if is_falling?
+            if is_falling? && !has_cheese?
                 @animation_falling += 1
 
                 if @animation_falling >= @animation_falling_interval
@@ -122,6 +156,20 @@ module RatGame
 
                 @tile_x = @animation_falling_frame * 16 + 3 * 16
                 @tile_y = 3 * 16
+            elsif is_falling? && has_cheese?
+                @animation_falling += 1
+
+                if @animation_falling >= @animation_falling_interval
+                    @animation_falling = 0
+                    @animation_falling_frame += 1
+                end
+
+                if @animation_falling_frame >= @animation_falling_frame_max
+                    @animation_falling_frame = @animation_falling_frame_max
+                end
+
+                @tile_x = @animation_falling_frame * 16 + 3 * 16
+                @tile_y = 2 * 16
             else
                 @animation_falling = 0
                 @animation_falling_frame = 0
@@ -285,6 +333,20 @@ module RatGame
         ###########
         # UTILS
         ###########
+
+        def has_cheese?
+            if @cheese_status == :ungrabbed
+                return false
+            elsif @cheese_status == :grabbed
+                return true
+            else
+                return false
+            end
+        end
+
+        def give_cheese
+            @cheese_status = :grabbed
+        end
 
         def give_jump(val)
             @jump_count += val

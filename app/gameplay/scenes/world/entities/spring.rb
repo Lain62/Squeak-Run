@@ -42,7 +42,10 @@ module RatGame
                     @level.mouse.move_jump_by(4)
                 end
             end
+        end
 
+        def draw
+            super
             if @animation > 0
                 @animation -= 1
 
@@ -56,10 +59,6 @@ module RatGame
     
                 @tile_x = @animation_frame * 16
             end
-        end
-
-        def draw
-            super
             Globals.outputs[:batch].sprites << self
         end
     end
