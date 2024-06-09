@@ -21,6 +21,10 @@ module RatGame
                 case object.name
                 when "spawn"
                     @entities << Spawn.new(object, self)
+                when "spring"
+                    @entities << Spring.new(object, self)
+                when "cheese"
+                    @entities << Cheese.new(object, self)
                 end
             end
         end

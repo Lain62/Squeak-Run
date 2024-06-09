@@ -278,13 +278,17 @@ module RatGame
         def draw
             super
             animation
-            Globals.outputs.debug << "#{is_falling?}"
+            Globals.outputs.debug << "#{@jump_count}"
             Globals.outputs[:batch].sprites << self
         end
 
         ###########
         # UTILS
         ###########
+
+        def give_jump(val)
+            @jump_count += val
+        end
 
         def is_idle?
             if @dx == 0 && @dy == 0
