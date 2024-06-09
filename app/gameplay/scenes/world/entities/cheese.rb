@@ -10,7 +10,7 @@ module RatGame
             @tile_h = 16
 
             @animation_idle = 0
-            @animation_idle_interval = 14
+            @animation_idle_interval = 10
             @animation_idle_frame = 0
             @animation_idle_frame_max = 5
             @hitbox_status = true
