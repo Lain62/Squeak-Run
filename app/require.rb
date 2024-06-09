@@ -5,6 +5,7 @@ require "app/engine/sprites.rb"
 require "app/engine/solids.rb"
 
 require "app/gameplay/scenes/scene_manager.rb"
+require "app/gameplay/scenes/scene_camera.rb"
 
 require "app/gameplay/scenes/world/scene_world.rb"
 

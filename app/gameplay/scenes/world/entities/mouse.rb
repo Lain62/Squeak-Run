@@ -172,6 +172,11 @@ module RatGame
             end
         end
 
+        def move_jump_by(amount)
+            @gravity = 0
+            move_y(amount)
+        end
+
         def move_x(amount, on_collide = nil)
             @xremainder += amount
             move = @xremainder.round()

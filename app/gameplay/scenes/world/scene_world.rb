@@ -7,6 +7,22 @@ module RatGame
             }
         end
 
+        def width
+            if current_level.loaded?
+                current_level.width
+            else
+                320
+            end
+        end
+
+        def height
+            if current_level.loaded?
+                current_level.height
+            else
+                180
+            end
+        end
+
         def entities
             if current_level.loaded?
                 current_level.entities
