@@ -4,6 +4,11 @@ module RatGame
             @deathui = UiWorldDeath.new
             @cat_timerui = UiWorldCatTimer.new
             @cheese_hud = UiWorldCheeseHud.new
+            @win = UiWorldWin.new
+        end
+
+        def win
+            @win
         end
 
         def cat_timer
@@ -23,12 +28,14 @@ module RatGame
             @cat_timerui.update
             @deathui.update
             @cheese_hud.update
+            @win.update
         end
 
         def draw
             @cat_timerui.draw
             @deathui.draw
             @cheese_hud.draw
+            @win.draw
         end
     end
 end

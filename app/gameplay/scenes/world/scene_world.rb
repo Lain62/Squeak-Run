@@ -16,19 +16,26 @@ module RatGame
             return if !current_level.loaded?
             return if mouse == nil
 
-            if mouse.is_safe?
-                cat_timer.rise
-            elsif mouse.is_dead?
-                cat_timer.reset
-            else
-                cat_timer.start
+            if win == :false
+                if mouse.is_safe?
+                    cat_timer.rise
+                elsif mouse.is_dead?
+                    cat_timer.reset
+                else
+                    cat_timer.start
+                end
+
+                if cat_timer.time == 1
+                    mouse.kill
+                end
+
+                cat_timer.update
             end
 
-            if cat_timer.time == 1
-                mouse.kill
+            if win != :false
+                cat_timer.stop
+                cat_timer.update
             end
-
-            cat_timer.update
         end
 
         def hazard_controller
@@ -45,7 +52,7 @@ module RatGame
             end
         end
 
-        def win?
+        def win
             return nil if !current_level.loaded?
 
             return current_level.win
@@ -153,7 +160,7 @@ module RatGame
                     entity.update
                 end
     
-                mouse.update if mouse != nil && !win?
+                mouse.update if mouse != nil && win == :false
             end
 
         end
@@ -173,7 +180,7 @@ module RatGame
                     block.draw
                 end
     
-                mouse.draw if mouse != nil && !win?
+                mouse.draw if mouse != nil && win == :false
             end
             
         end

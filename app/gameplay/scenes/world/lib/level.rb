@@ -12,7 +12,8 @@ module RatGame
             @cat_timer = nil
             @width = 0
             @height = 0
-            @win = false
+            @win = :false
+            
         end
 
         def loaded?
