@@ -76,6 +76,7 @@ module RatGame
             if @timer_index >= @timer_index_max
                 @status = :with_cheese
             end
+
         end
 
         def draw

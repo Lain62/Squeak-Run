@@ -64,6 +64,16 @@ module RatGame
 
         def unload
             @load_status = false
+            @mouse = nil
+            @collision_blocks = []
+            @safe_blocks = []
+            @entities = []
+            @hazard_blocks = []
+            @cat_timer = nil
+            @width = 0
+            @height = 0
+            @win = :false
+            @load_status = false
         end
 
         def load

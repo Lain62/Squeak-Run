@@ -5,6 +5,12 @@ module RatGame
     def initialize
       Globals.state.project.ogmo = Drogmo::Project.new("content/squeak_run.ogmo")
       Globals.state.scene.manager = SceneManager.new()
+      Globals.outputs.static_solids << {
+        x: 0,
+        y: 0,
+        w: 1280,
+        h: 720
+      }
     end
 
     def update

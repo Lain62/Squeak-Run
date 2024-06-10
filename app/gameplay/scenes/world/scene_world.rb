@@ -1,11 +1,15 @@
 module RatGame
     class SceneWorld
+        attr_accessor :loaded
+        attr_reader :timer
         def initialize
             @current_level_id = :test_level
             @levels = {
-                test_level: Level.new("content/levels/test_level.json")
+                test_level: "content/levels/test_level.json"
             }
+            @level = Level.new(@levels[@current_level_id])
             @ui = UiWorld.new
+            @timer = 0
         end
 
         def ui
@@ -129,13 +133,15 @@ module RatGame
         end
 
         def current_level
-            @levels[@current_level_id]
+            @level
         end
 
         def change_level(level_id)
             if current_level.loaded?
                 current_level.unload
+                @ui = UiWorld.new
                 @current_level_id = level_id
+                @level = Level.new(@levels[@current_level_id])
             end
         end
 
@@ -162,10 +168,19 @@ module RatGame
     
                 mouse.update if mouse != nil && win == :false
             end
-
+            @timer += 1 if win != :true
         end
 
         def draw
+            Globals.outputs[:batch].solids << {
+                x: 0,
+                y: 0,
+                w: width,
+                h: height,
+                r: 250,
+                g: 250,
+                b: 250
+            }
             ui.draw
             if current_level.loaded?
                 entities.each do |entity|

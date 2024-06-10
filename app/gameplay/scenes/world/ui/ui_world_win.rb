@@ -18,6 +18,17 @@ module RatGame
                 primitive_marker: :label
             }
         end
+        def debug_text_2
+            {
+                x: 0,
+                y: 100,
+                text: "#{world.timer / 60}s",
+                r: 255,
+                g: 255,
+                b: 255,
+                primitive_marker: :label
+            }
+        end
 
         def foreground
             {
@@ -30,7 +41,11 @@ module RatGame
         end
 
         def update
-            
+            return if world.win != :true
+
+            if Globals::Inputs.a_down
+                Globals.state.scene.manager.change_scene(:level_menu)
+            end
         end
 
 
@@ -38,7 +53,7 @@ module RatGame
             if world.win == :true
                 Globals.outputs[:ui].primitives << foreground
                 Globals.outputs[:ui].primitives << debug_text
-
+                Globals.outputs[:ui].primitives << debug_text_2
             end
         end
     end

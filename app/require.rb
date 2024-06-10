@@ -7,6 +7,12 @@ require "app/engine/solids.rb"
 require "app/gameplay/scenes/scene_manager.rb"
 require "app/gameplay/scenes/scene_camera.rb"
 
+require "app/gameplay/scenes/error/scene_error.rb"
+
+require "app/gameplay/scenes/level_menu/scene_level_menu.rb"
+
+require "app/gameplay/scenes/transition/scene_transition.rb"
+
 require "app/gameplay/scenes/world/scene_world.rb"
 
 require "app/gameplay/scenes/world/ui/ui_world.rb"
