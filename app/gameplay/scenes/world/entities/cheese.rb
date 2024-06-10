@@ -14,9 +14,15 @@ module RatGame
             @animation_idle_frame = 0
             @animation_idle_frame_max = 4
             @hitbox_status = true
+            @status = :ungrabbed
+
+            @animation_grabbed = 0
+            @animation_grabbed_interval = 4
+            @animation_grabbed_frame = 0
+            @animation_grabbed_frame_max = 4
         end
 
-        def animation
+        def animation_idle
             @animation_idle += 1
 
             if @animation_idle >= @animation_idle_interval
@@ -29,6 +35,25 @@ module RatGame
             end
 
             @tile_x = @animation_idle_frame * 16
+        end
+
+        def animation_grabbing
+            @animation_grabbed += 1
+
+            if @animation_grabbed >= @animation_grabbed_interval
+                @animation_grabbed = 0
+                @animation_grabbed_frame += 1
+            end
+
+            if @animation_grabbed_frame == 2
+                @y -= 1
+            end
+
+            if @animation_grabbed_frame >= @animation_grabbed_frame_max
+                @status = :grabbed
+            end
+
+            @tile_x = @animation_grabbed_frame * 16 + 5 * 16
         end
 
         def hitbox
@@ -47,6 +72,8 @@ module RatGame
                     if Globals.geometry.intersect_rect?(hitbox, @level.mouse)
                         @level.mouse.give_cheese
                         @hitbox_status = false
+                        @status = :grabbing
+                        @y += 15
                     end
                 end
 
@@ -59,9 +86,11 @@ module RatGame
 
         def draw
             super
-            animation
+            animation_idle if @status == :ungrabbed
+            animation_grabbing if @status == :grabbing
             
-            if @hitbox_status == true
+            if @status != :grabbed
+                Globals.outputs.debug << "showing"
                 Globals.outputs[:batch].sprites << self
             end
         end
