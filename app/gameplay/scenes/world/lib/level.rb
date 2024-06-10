@@ -1,6 +1,6 @@
 module RatGame
     class Level
-        attr_accessor :mouse, :collision_blocks, :safe_blocks, :entities, :width, :height, :cat_timer, :hazard_blocks
+        attr_accessor :mouse, :collision_blocks, :safe_blocks, :entities, :width, :height, :cat_timer, :hazard_blocks, :win
         def initialize(path)
             @data = Drogmo::Level.new(Globals.state.project.ogmo, path)
             @load_status = false
@@ -12,6 +12,7 @@ module RatGame
             @cat_timer = nil
             @width = 0
             @height = 0
+            @win = false
         end
 
         def loaded?

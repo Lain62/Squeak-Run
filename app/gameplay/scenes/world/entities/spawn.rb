@@ -9,6 +9,11 @@ module RatGame
             @tile_w = 16
             @tile_h = 16
 
+            @animation_status = :stop
+            @animation = 0
+            @animation_interval = 10
+            @animation_frame = 0
+            @animation_frame_max = 7
         end
 
         def ui
@@ -29,6 +34,24 @@ module RatGame
                     @level.mouse.y = @y
                     @level.mouse.revive
                 end
+            end
+
+            if Globals.geometry.intersect_rect?(self, @level.mouse) && @level.mouse.has_cheese?
+                @animation_status = :start
+                @level.win = true
+            end
+
+            if @animation_status == :start
+                @animation += 1
+            end
+
+            if @animation >= @animation_interval && @animation_frame < @animation_frame_max
+                @animation = 0
+                @animation_frame += 1
+            end
+
+            if @animation_status == :start
+                @tile_x = @animation_frame * 16 + 16
             end
         end
 

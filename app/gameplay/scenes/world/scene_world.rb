@@ -45,6 +45,18 @@ module RatGame
             end
         end
 
+        def win?
+            return nil if !current_level.loaded?
+
+            return current_level.win
+        end
+
+        def win=(val)
+            return nil if !current_level.loaded?
+
+            current_level.win = val
+        end
+
         def cat_timer
             if current_level.loaded?
                 current_level.cat_timer
@@ -141,7 +153,7 @@ module RatGame
                     entity.update
                 end
     
-                mouse.update if mouse != nil
+                mouse.update if mouse != nil && !win?
             end
 
         end
@@ -161,8 +173,9 @@ module RatGame
                     block.draw
                 end
     
-                mouse.draw if mouse != nil
+                mouse.draw if mouse != nil && !win?
             end
+            
         end
     end
 end
