@@ -70,8 +70,8 @@ module RatGame
 
         def draw
             if world.win == :true
-                Globals.outputs[:ui].primitives << foreground
-                Globals.outputs[:ui].primitives << timer
+                Globals.outputs[:batch_ui].primitives << foreground
+                Globals.outputs[:batch_ui].primitives << timer
             end
         end
     end

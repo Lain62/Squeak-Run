@@ -1,5 +1,5 @@
 module RatGame
-    class UiWorldDeath
+    class GroundWorldBackground
         def initialize
             @timer = 0
             @timer_max = 60

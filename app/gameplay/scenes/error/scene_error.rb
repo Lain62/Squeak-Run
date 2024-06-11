@@ -11,7 +11,7 @@ module RatGame
         end
 
         def draw
-            Globals.outputs[:ui].solids << {
+            Globals.outputs[:batch_ui].solids << {
                 x: 140, 
                 y: 90,
                 w: 320,
@@ -20,13 +20,13 @@ module RatGame
                 g: 250,
                 b: 250
             }
-            Globals.outputs[:ui].labels << {
+            Globals.outputs[:batch_ui].labels << {
                 x: 140, 
                 y: 90,
                 text: "Error, you are not supposed to be here",
                 size_enum: 1
             }
-            Globals.outputs[:ui].labels << {
+            Globals.outputs[:batch_ui].labels << {
                 x: 140, 
                 y: 80,
                 text: "Press J / Z / SPACE to go back to main menu",

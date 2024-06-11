@@ -37,9 +37,9 @@ module RatGame
             Globals.outputs[:batch].w = Globals.state.scene.camera.w
             Globals.outputs[:batch].h = Globals.state.scene.camera.h
 
-            Globals.outputs[:ui].transient!
-            Globals.outputs[:ui].w = 320
-            Globals.outputs[:ui].h = 180
+            Globals.outputs[:batch_ui].transient!
+            Globals.outputs[:batch_ui].w = 320
+            Globals.outputs[:batch_ui].h = 180
             
             case @current_scene
             when :world then Globals.state.scene.world.draw
@@ -48,6 +48,14 @@ module RatGame
             else
                 Globals.state.scene.error.draw
             end
+
+            Globals.outputs.sprites << {
+                x: 0,
+                y: 0,
+                w: 320 * 4,
+                h: 180 * 4,
+                path: :batch_background
+            }
 
             Globals.outputs.sprites << {
                 x: Globals.state.scene.camera.x,
@@ -62,8 +70,29 @@ module RatGame
                 y: 0,
                 w: 320 * 4,
                 h: 180 * 4,
+                path: :batch_foreground
+            }
+
+            Globals.outputs.sprites << {
+                x: 0,
+                y: 0,
+                w: 320 * 4,
+                h: 180 * 4,
+                path: :batch_ui
+            }
+
+            Globals.outputs.sprites << {
+                x: 0,
+                y: 0,
+                w: 1280,
+                h: 720,
                 path: :ui
             }
+            Globals.outputs[:batch_background].sprites
+            Globals.outputs[:batch].sprites
+            Globals.outputs[:batch_foreground].sprites
+            Globals.outputs[:batch_ui].sprites
+            Globals.outputs[:ui].sprites
         end
     end
 end

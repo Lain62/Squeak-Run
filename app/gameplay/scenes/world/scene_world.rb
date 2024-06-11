@@ -172,15 +172,6 @@ module RatGame
         end
 
         def draw
-            Globals.outputs[:batch].solids << {
-                x: 0,
-                y: 0,
-                w: width,
-                h: height,
-                r: 250,
-                g: 250,
-                b: 250
-            }
             ui.draw
             if current_level.loaded?
                 entities.each do |entity|

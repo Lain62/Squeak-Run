@@ -48,8 +48,8 @@ module RatGame
         end
 
         def draw
-            Globals.outputs[:ui].primitives << background
-            Globals.outputs[:ui].primitives << foreground
+            Globals.outputs[:batch_ui].primitives << background
+            Globals.outputs[:batch_ui].primitives << foreground
         end
     end
 end

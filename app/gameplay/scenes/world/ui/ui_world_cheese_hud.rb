@@ -82,11 +82,11 @@ module RatGame
         def draw
             case @status
             when :no_cheese
-                Globals.outputs[:ui].primitives << no_cheese_hud
+                Globals.outputs[:batch_ui].primitives << no_cheese_hud
             when :cheese_get
-                Globals.outputs[:ui].primitives << cheese_get_hud
+                Globals.outputs[:batch_ui].primitives << cheese_get_hud
             when :with_cheese
-                Globals.outputs[:ui].primitives << with_cheese_hud
+                Globals.outputs[:batch_ui].primitives << with_cheese_hud
             end
         end
     end

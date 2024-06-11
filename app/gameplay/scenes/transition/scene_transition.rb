@@ -36,8 +36,8 @@ module RatGame
                 {
                     x: 0,
                     y: 0,
-                    w: 320,
-                    h: 180,
+                    w: 1280,
+                    h: 720,
                     primitive_marker: :solid,
                     r: 0,
                     g: 0,
@@ -61,7 +61,7 @@ module RatGame
         end
 
         def draw
-            Globals.outputs.primitives << sprites
+            Globals.outputs[:ui].primitives << sprites
         end
     end
 end
