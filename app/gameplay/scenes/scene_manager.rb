@@ -49,10 +49,6 @@ module RatGame
                 Globals.state.scene.error.draw
             end
 
-
-
-            
-
             Globals.outputs.sprites << {
                 x: Globals.state.scene.camera.x,
                 y: Globals.state.scene.camera.y,

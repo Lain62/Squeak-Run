@@ -44,13 +44,15 @@ module RatGame
                     b: 0
                 },
                 {
-                    x: 320,
-                    y: 0,
-                    text: "loading",
+                    x: 1280 / 2,
+                    y: 720 / 2,
+                    text: "LOADING",
                     primitive_marker: :label,
                     size_enum: 1,
-                    alignment_enum: 2,
-                    vertical_alignment_enum: 0,
+                    alignment_enum: 1,
+                    vertical_alignment_enum: 1,
+                    size_enum: 4,
+                    font: "content/fonts/Pixeled.ttf",
                     r: 250,
                     g: 250,
                     b: 250,
@@ -59,7 +61,7 @@ module RatGame
         end
 
         def draw
-            Globals.outputs[:ui].primitives << sprites
+            Globals.outputs.primitives << sprites
         end
     end
 end

@@ -21,19 +21,35 @@ module RatGame
         end
 
         def draw
-            Globals.outputs[:ui].solids << {
-                x: 0,
-                y: 0,
+            Globals.outputs[:ui].primitives << {
+                x:0,
+                y:0,
                 w: 320,
                 h: 180,
                 r: 250,
                 g: 250,
-                b: 250
+                b: 250,
+                primitive_marker: :solid
             }
-            Globals.outputs[:ui].labels << {
-                x: 140, 
-                y: 90,
-                text: "#{levels_list[@current_index].name}"
+            # Globals.outputs.primitives << {
+            #     x: 0,
+            #     y: 0,
+            #     w: 1280,
+            #     h: 720,
+            #     r: 250,
+            #     g: 250,
+            #     b: 250,
+            #     primitive_marker: :solid
+            # }
+            Globals.outputs.primitives << {
+                x: 1280 / 2, 
+                y: 720 / 2,
+                size_enum: 5,
+                alignment_enum: 1,
+                vertical_alignment_enum: 1,
+                text: "#{(levels_list[@current_index].name).upcase()}",
+                font: "content/fonts/Pixeled.ttf",
+                primitive_marker: :label
             }
         end
     end
