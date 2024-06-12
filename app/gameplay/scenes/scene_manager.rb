@@ -40,6 +40,14 @@ module RatGame
             Globals.outputs[:batch_ui].transient!
             Globals.outputs[:batch_ui].w = 320
             Globals.outputs[:batch_ui].h = 180
+
+            Globals.outputs[:batch_background].transient!
+            Globals.outputs[:batch_background].w = 320
+            Globals.outputs[:batch_background].h = 180
+
+            Globals.outputs[:batch_foreground].transient!
+            Globals.outputs[:batch_foreground].w = 320
+            Globals.outputs[:batch_foreground].h = 180
             
             case @current_scene
             when :world then Globals.state.scene.world.draw

@@ -2,6 +2,7 @@ module RatGame
     class Cheese < EntityWithSprites
         def initialize(data, level)
             super(data)
+            @original_y = @y
             @level = level
             @path = Globals.atlas
             @tile_x = 0
@@ -69,12 +70,19 @@ module RatGame
             super
             if @level.mouse != nil
                 if @hitbox_status == true
-                    if Globals.geometry.intersect_rect?(hitbox, @level.mouse)
+                    if Globals.geometry.intersect_rect?(hitbox, @level.mouse) && !@level.mouse.is_dead?
+                        Globals.outputs.sounds << "content/sounds/cheese.wav"
                         @level.mouse.give_cheese
                         @hitbox_status = false
                         @status = :grabbing
                         @y += 15
                     end
+                end
+
+                if @level.mouse.is_dead?
+                    @hitbox_status = true
+                    @status = :ungrabbed
+                    @y = @original_y
                 end
 
                 if @hitbox_status == false

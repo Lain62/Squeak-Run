@@ -43,7 +43,8 @@ module RatGame
         def update
             return if @level.mouse == nil
 
-            if Globals.geometry.intersect_rect?(self, @level.mouse)
+            if Globals.geometry.intersect_rect?(self, @level.mouse) && @level.mouse.spawn_point != @flag_number &&  @animation_status == :drop
+                Globals.outputs.sounds << "content/sounds/flag.wav"
                 @animation_status = :rising if @animation_status == :drop
                 @level.mouse.spawn_point = @flag_number
             end

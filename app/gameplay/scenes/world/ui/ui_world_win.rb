@@ -2,7 +2,7 @@ module RatGame
     class UiWorldWin
         def initialize
             @anim = -180
-            @anim_max = 0
+            @anim_max = -10
 
             @anim_idle = 0
             @anim_idle_interval = 30
@@ -63,6 +63,7 @@ module RatGame
             end
 
             if Globals::Inputs.a_down
+                Globals.outputs.sounds << "content/sounds/select.wav"
                 Globals.state.scene.manager.change_scene(:level_menu)
             end
         end

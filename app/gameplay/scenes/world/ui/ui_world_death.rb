@@ -55,6 +55,10 @@ module RatGame
             if @timer > 0
                 @timer -= 1
             end
+
+            if @timer == @timer_max - 1
+                Globals.outputs.sounds << "content/sounds/death.wav"
+            end
         end
 
         def check_mouse

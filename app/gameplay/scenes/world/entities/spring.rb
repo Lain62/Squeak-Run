@@ -31,6 +31,7 @@ module RatGame
             super
             if @level.mouse != nil
                 if Globals.geometry.intersect_rect?(hitbox, @level.mouse)
+                    Globals.outputs.sounds << "content/sounds/spring.wav"
                     @jump_timer = @jump_timer_max
                     @level.mouse.give_jump(1)
                     @animation = @animation_max

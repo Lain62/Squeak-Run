@@ -26,15 +26,17 @@ module RatGame
 
         def update
             @cat_timerui.update
-            @deathui.update
+            
             @cheese_hud.update
+            @deathui.update
             @win.update
         end
 
         def draw
             @cat_timerui.draw
-            @deathui.draw
+            
             @cheese_hud.draw
+            @deathui.draw
             @win.draw
         end
     end

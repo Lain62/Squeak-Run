@@ -15,6 +15,10 @@ require "app/gameplay/scenes/transition/scene_transition.rb"
 
 require "app/gameplay/scenes/world/scene_world.rb"
 
+require "app/gameplay/scenes/world/background/background_world_cat_red.rb"
+require "app/gameplay/scenes/world/background/background_world_cat.rb"
+require "app/gameplay/scenes/world/background/background_world.rb"
+
 require "app/gameplay/scenes/world/ui/ui_world.rb"
 require "app/gameplay/scenes/world/ui/ui_world_death.rb"
 require "app/gameplay/scenes/world/ui/ui_world_cheese_hud.rb"

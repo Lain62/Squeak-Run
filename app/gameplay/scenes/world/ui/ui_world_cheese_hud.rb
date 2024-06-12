@@ -77,6 +77,10 @@ module RatGame
                 @status = :with_cheese
             end
 
+            if mouse.is_dead?
+                @status = :no_cheese
+                @timer_index = 0
+            end
         end
 
         def draw

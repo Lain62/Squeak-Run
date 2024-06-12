@@ -31,6 +31,7 @@ module RatGame
             end
 
             if Globals::Inputs.a_down
+                Globals.outputs.sounds << "content/sounds/select.wav"
                 Globals.state.scene.world.change_level(levels_list[@current_index].goto)
                 Globals.state.scene.manager.change_scene(:world)
             end

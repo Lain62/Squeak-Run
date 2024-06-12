@@ -193,6 +193,7 @@ module RatGame
 
         def move_jump
             if Globals::Inputs.a_down && @jump_count > 0
+                Globals.outputs.sounds << "content/sounds/jump.wav"
                 @jump = @jump_max
                 @jump_count -= 1
             end
@@ -394,10 +395,12 @@ module RatGame
         end
 
         def kill
+            @cheese_status = :ungrabbed
             @dead_status = true
         end
 
         def revive
+            @cheese_status = :ungrabbed
             @dead_status = false
         end
 

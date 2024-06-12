@@ -9,6 +9,7 @@ module RatGame
             }
             @level = Level.new(@levels[@current_level_id])
             @ui = UiWorld.new
+            @background = BackgroundWorld.new
             @timer = 0
         end
 
@@ -156,6 +157,8 @@ module RatGame
                 load_current_level
             end
 
+            @background.update
+
             ui.update
             if current_level.loaded?
                 
@@ -173,6 +176,7 @@ module RatGame
 
         def draw
             ui.draw
+            @background.draw
             if current_level.loaded?
                 entities.each do |entity|
                     entity.draw
