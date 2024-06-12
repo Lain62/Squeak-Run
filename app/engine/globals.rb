@@ -49,6 +49,22 @@ module RatGame
                 $args.inputs.keyboard.key_down.down_arrow || $args.inputs.keyboard.key_down.s || $args.inputs.keyboard.key_held.down_arrow || $args.inputs.keyboard.key_held.s
             end
 
+            def self.left_down
+                $args.inputs.keyboard.key_down.left_arrow || $args.inputs.keyboard.key_down.a 
+            end
+
+            def self.right_down
+                $args.inputs.keyboard.key_down.right_arrow || $args.inputs.keyboard.key_down.d 
+            end
+
+            def self.up_down
+                $args.inputs.keyboard.key_down.up_arrow || $args.inputs.keyboard.key_down.w 
+            end
+
+            def self.down_down
+                $args.inputs.keyboard.key_down.down_arrow || $args.inputs.keyboard.key_down.s 
+            end
+
             def self.a
                 $args.inputs.keyboard.key_down.z || $args.inputs.keyboard.key_down.j || $args.inputs.keyboard.key_down.space || $args.inputs.keyboard.key_held.z || $args.inputs.keyboard.key_held.j || $args.inputs.keyboard.key_held.space 
             end

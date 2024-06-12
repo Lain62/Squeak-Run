@@ -7,12 +7,18 @@ module RatGame
             @anim_idle_interval = 30
             @anim_idle_frame = 0
             @anim_idle_frame_max = 1
+
+            @size = 80
         end
 
         def levels_list
             [
                 {
                     name: "Level Test",
+                    goto: :test_level
+                },
+                {
+                    name: "Level 1",
                     goto: :test_level
                 }
             ]
@@ -30,10 +36,26 @@ module RatGame
                 @anim_idle_frame = 0
             end
 
+            if Globals::Inputs.right_down
+                Globals.outputs.sounds << "content/sounds/select.wav"
+                @size = 85
+                @current_index += 1 if @current_index < levels_list.length - 1
+            end
+
+            if Globals::Inputs.left_down
+                Globals.outputs.sounds << "content/sounds/select.wav"
+                @size = 85
+                @current_index -= 1 if @current_index > 0
+            end
+
             if Globals::Inputs.a_down
                 Globals.outputs.sounds << "content/sounds/select.wav"
                 Globals.state.scene.world.change_level(levels_list[@current_index].goto)
                 Globals.state.scene.manager.change_scene(:world)
+            end
+
+            if @size > 80
+                @size -= 1
             end
         end
 
@@ -55,12 +77,15 @@ module RatGame
             Globals.outputs[:ui].primitives << {
                 x: 1280 / 2, 
                 y: 380,
-                size_enum: 40,
+                size_enum: @size,
                 alignment_enum: 1,
                 vertical_alignment_enum: 1,
                 text: "#{(levels_list[@current_index].name).upcase()}",
                 font: "content/fonts/Pixeled.ttf",
-                primitive_marker: :label
+                primitive_marker: :label,
+                r:30,
+                g:30,
+                b:30
             }
         end
     end
