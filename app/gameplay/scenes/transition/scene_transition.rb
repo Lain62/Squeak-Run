@@ -3,8 +3,8 @@ module RatGame
         attr_reader :status
         attr_accessor :next_scene
         def initialize
-            @timer_max = 180
-            @timer_min = -180
+            @timer_max = 100
+            @timer_min = 0
             @speed = 20
             @timer = @timer_min
             @status = :stop
@@ -48,10 +48,9 @@ module RatGame
                     y: 720 / 2,
                     text: "LOADING",
                     primitive_marker: :label,
-                    size_enum: 1,
+                    size_enum: 80,
                     alignment_enum: 1,
                     vertical_alignment_enum: 1,
-                    size_enum: 4,
                     font: "content/fonts/Pixeled.ttf",
                     r: 250,
                     g: 250,

@@ -61,7 +61,6 @@ module RatGame
         def draw
             super
             animation
-            Globals.outputs.debug << "#{@animation}"
             Globals.outputs[:batch].sprites << self
         end
     end

@@ -1,10 +1,10 @@
 # Remove the pound sign and leading space for the properties below before publishing your game.
 devid=Ivulai
 devtitle=Lain62
-gameid=squeak_run
-gametitle=Squeak Run
-version=1.1
-icon=metadata/icon2.png
+gameid=squeak_run_r
+gametitle=Squeak Run:R
+version=1.4
+icon=metadata/icon3.png
 
 # === Flags available at all licensing tiers ===
 

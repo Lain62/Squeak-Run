@@ -2,7 +2,7 @@ module RatGame
     class SceneManager
         attr_accessor :current_scene, :width, :height, :loaded
         def initialize
-            @current_scene = :level_menu
+            @current_scene = :main_menu
             @loaded = false
             
             Globals.state.scene.camera = SceneCamera.new()
@@ -10,12 +10,14 @@ module RatGame
             Globals.state.scene.level_menu = SceneLevelMenu.new
             Globals.state.scene.transition = SceneTransition.new
             Globals.state.scene.error = SceneError.new
+            Globals.state.scene.main_menu = SceneMainMenu.new
         end
 
         def change_scene(val)
             @loaded = false
-            @current_scene = :transition
-            Globals.state.scene.transition.start_transition(val) if Globals.state.scene.transition.status != :start
+            @current_scene = val
+            # @current_scene = :transition
+            # Globals.state.scene.transition.start_transition(val) if Globals.state.scene.transition.status != :start
         end
 
         def update
@@ -24,10 +26,10 @@ module RatGame
             when :world then Globals.state.scene.world.update
             when :level_menu then Globals.state.scene.level_menu.update
             when :transition then Globals.state.scene.transition.update
+            when :main_menu then Globals.state.scene.main_menu.update
             else
                 Globals.state.scene.error.update
             end
-
             
         end
 
@@ -53,6 +55,7 @@ module RatGame
             when :world then Globals.state.scene.world.draw
             when :level_menu then Globals.state.scene.level_menu.draw
             when :transition then Globals.state.scene.transition.draw
+            when :main_menu then Globals.state.scene.main_menu.draw
             else
                 Globals.state.scene.error.draw
             end

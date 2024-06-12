@@ -37,7 +37,6 @@ module RatGame
             end
 
             if Globals.geometry.intersect_rect?(self, @level.mouse) && @level.mouse.has_cheese?
-                
                 @animation_status = :start
                 @level.win = :rising
             end

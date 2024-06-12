@@ -9,6 +9,8 @@ require "app/gameplay/scenes/scene_camera.rb"
 
 require "app/gameplay/scenes/error/scene_error.rb"
 
+require "app/gameplay/scenes/main_menu/scene_main_menu.rb"
+
 require "app/gameplay/scenes/level_menu/scene_level_menu.rb"
 
 require "app/gameplay/scenes/transition/scene_transition.rb"

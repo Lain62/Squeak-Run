@@ -54,6 +54,11 @@ module RatGame
                 Globals.state.scene.manager.change_scene(:world)
             end
 
+            if Globals::Inputs.b_down
+                Globals.outputs.sounds << "content/sounds/cancel.wav"
+                Globals.state.scene.manager.change_scene(:main_menu)
+            end
+
             if @size > 80
                 @size -= 1
             end
