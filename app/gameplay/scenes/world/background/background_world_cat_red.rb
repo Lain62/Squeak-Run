@@ -29,12 +29,15 @@ module RatGame
                 tile_h: 180,
                 path: "content/images/gatoevileyes.png",
                 primitive_marker: :sprite,
-                a: (252 - test).to_i
+                a: test_2,
+                r: test_2,
+                g: test_2,
+                b: test_2
             }
         end
 
         def update
-            Globals.outputs.debug << "#{(252 - test).to_i}"
+            # Globals.outputs.debug << "#{(252 - test).to_i}"
         end
 
         def draw
