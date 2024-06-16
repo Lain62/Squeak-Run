@@ -11,6 +11,7 @@ module RatGame
         w: 1280,
         h: 720
       }
+      Globals.audio.volume = 0.75
     end
 
     def update

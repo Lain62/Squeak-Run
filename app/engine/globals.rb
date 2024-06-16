@@ -32,6 +32,10 @@ module RatGame
             $args.geometry
         end
 
+        def self.audio
+            $args.audio
+        end
+
         class Inputs
             def self.left
                 $args.inputs.keyboard.key_down.left_arrow || $args.inputs.keyboard.key_down.a || $args.inputs.keyboard.key_held.left_arrow || $args.inputs.keyboard.key_held.a

@@ -5,7 +5,12 @@ module RatGame
         def initialize
             @current_level_id = :test_level
             @levels = {
-                test_level: "content/levels/test_level.json"
+                test_level: "content/levels/test_level.json",
+                level_1: "content/levels/level_1.json",
+                level_2: "content/levels/level_2.json",
+                level_3: "content/levels/level_3.json",
+                level_4: "content/levels/level_4.json",
+                level_5: "content/levels/level_5.json",
             }
             @level = Level.new(@levels[@current_level_id])
             @ui = UiWorld.new
@@ -140,10 +145,11 @@ module RatGame
         def change_level(level_id)
             if current_level.loaded?
                 current_level.unload
-                @ui = UiWorld.new
-                @current_level_id = level_id
-                @level = Level.new(@levels[@current_level_id])
+
             end
+            @ui = UiWorld.new
+            @current_level_id = level_id
+            @level = Level.new(@levels[@current_level_id])
         end
 
         def load_current_level
@@ -178,17 +184,19 @@ module RatGame
             ui.draw
             @background.draw
             if current_level.loaded?
+                Globals.outputs[:batch].sprites << current_level.background_layer.sprites
+
                 entities.each do |entity|
                     entity.draw
                 end
+
+                # safe_blocks.each do |block|
+                #     block.draw
+                # end
     
-                safe_blocks.each do |block|
-                    block.draw
-                end
-    
-                collision_blocks.each do |block|
-                    block.draw
-                end
+                # collision_blocks.each do |block|
+                #     block.draw
+                # end
     
                 mouse.draw if mouse != nil && win == :false
             end

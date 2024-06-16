@@ -39,6 +39,8 @@ module RatGame
             Globals.outputs[:batch].w = Globals.state.scene.camera.w
             Globals.outputs[:batch].h = Globals.state.scene.camera.h
 
+            Globals.outputs[:ui].transient!
+
             Globals.outputs[:batch_ui].transient!
             Globals.outputs[:batch_ui].w = 320
             Globals.outputs[:batch_ui].h = 180

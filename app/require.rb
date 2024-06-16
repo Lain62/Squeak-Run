@@ -17,6 +17,7 @@ require "app/gameplay/scenes/transition/scene_transition.rb"
 
 require "app/gameplay/scenes/world/scene_world.rb"
 
+require "app/gameplay/scenes/world/background/background_world_bg.rb"
 require "app/gameplay/scenes/world/background/background_world_cat_red.rb"
 require "app/gameplay/scenes/world/background/background_world_cat.rb"
 require "app/gameplay/scenes/world/background/background_world.rb"

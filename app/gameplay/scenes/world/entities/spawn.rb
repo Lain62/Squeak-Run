@@ -14,6 +14,8 @@ module RatGame
             @animation_interval = 10
             @animation_frame = 0
             @animation_frame_max = 7
+
+            @audio_played = false
         end
 
         def ui
@@ -55,7 +57,10 @@ module RatGame
             end
 
             if @animation_frame == 5
-                Globals.outputs.sounds << "content/sounds/flag.wav"
+                if @audio_played == false
+                    Globals.outputs.sounds << "content/sounds/flag.wav"
+                    @audio_played = true
+                end
             end
 
             if @animation_frame == @animation_frame_max

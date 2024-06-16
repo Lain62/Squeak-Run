@@ -40,7 +40,7 @@ module RatGame
 
                 if @jump_timer > 0
                     @jump_timer -= 1
-                    @level.mouse.move_jump_by(4)
+                    @level.mouse.move_jump_by(5)
                 end
             end
         end

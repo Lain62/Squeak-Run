@@ -16,7 +16,7 @@ module RatGame
             @gravity = 0
             @gravity_max = 4
             @jump = 0
-            @jump_max = 14
+            @jump_max = 17
             @jump_power = 3
             @jump_count = 0
             @jump_count_max = 2
@@ -53,7 +53,6 @@ module RatGame
         ###########
         # ANIMATION
         ###########
-        # TODO: REIMPLEMENT THE ANIMATION WALK LOOP AND ANIMATION JUMP WITH YOUR OWN METHOD
 
         def animation_flip_horizontally
             if @dx > 0
@@ -332,7 +331,7 @@ module RatGame
             super
             return if is_dead?
             animation
-            Globals.outputs.debug << "#{@jump_count}"
+            Globals.outputs[:batch].sprites << glow
             Globals.outputs[:batch].sprites << self
         end
 
@@ -438,6 +437,21 @@ module RatGame
                 y: @y,
                 w: @w - 2,
                 h: @h / 2
+            }
+        end
+
+        def glow
+            {
+                x: @x - 8,
+                y: @y - 11,
+                w: 32,
+                h: 32,
+                path: Globals.atlas,
+                tile_x: 9 * 16,
+                tile_y: 0,
+                tile_w: 32,
+                tile_h: 32,
+                a: 100
             }
         end
 

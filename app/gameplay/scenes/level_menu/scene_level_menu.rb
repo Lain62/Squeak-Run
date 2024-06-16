@@ -19,7 +19,23 @@ module RatGame
                 },
                 {
                     name: "Level 1",
-                    goto: :test_level
+                    goto: :level_1
+                },
+                {
+                    name: "Level 2",
+                    goto: :level_2
+                },
+                {
+                    name: "Level 3",
+                    goto: :level_3
+                },
+                {
+                    name: "Level 4",
+                    goto: :level_4
+                },
+                {
+                    name: "Level 5",
+                    goto: :level_5
                 }
             ]
         end
@@ -67,6 +83,7 @@ module RatGame
 
 
         def draw
+            Globals.outputs.debug << "Index #{@current_index}"
             Globals.outputs[:batch_ui].primitives << {
                 x:0,
                 y:0,

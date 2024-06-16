@@ -30,6 +30,10 @@ module RatGame
             end
         end
 
+        def background_layer
+            @data.layers["background"]
+        end
+
         def load_layer_object
             @data.layers["object"].entities.each do |object|
                 case object.name
@@ -40,7 +44,7 @@ module RatGame
                 when "cheese"
                     @entities << Cheese.new(object, self)
                 when "flag"
-                    @entities << Flag.new(object, self, @entities.length)
+                    @entities << Flag.new(object, self, @entities.length + 1)
                 end
             end
         end
