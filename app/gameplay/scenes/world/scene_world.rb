@@ -150,6 +150,7 @@ module RatGame
             @ui = UiWorld.new
             @current_level_id = level_id
             @level = Level.new(@levels[@current_level_id])
+            @timer = 0
         end
 
         def load_current_level
