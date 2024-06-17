@@ -24,7 +24,7 @@ module RatGame
 
             if Globals::Inputs.down_down
                 Globals.outputs.sounds << "content/sounds/select.wav"
-                @current_index += 1 if @current_index < 3
+                @current_index += 1 if @current_index < 4
             end
 
             if Globals::Inputs.up_down
@@ -36,6 +36,7 @@ module RatGame
                 Globals.outputs.sounds << "content/sounds/select.wav"
                 case @current_index
                 when 1 then Globals.state.scene.manager.change_scene(:level_menu)
+                when 4 then $args.gtk.request_quit
                 end
             end
 
