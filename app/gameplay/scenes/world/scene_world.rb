@@ -11,6 +11,8 @@ module RatGame
                 level_3: "content/levels/level_3.json",
                 level_4: "content/levels/level_4.json",
                 level_5: "content/levels/level_5.json",
+                level_6: "content/levels/level_6.json",
+                level_7: "content/levels/level_7.json",
             }
             @level = Level.new(@levels[@current_level_id])
             @ui = UiWorld.new

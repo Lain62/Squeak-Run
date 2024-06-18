@@ -14,10 +14,6 @@ module RatGame
         def levels_list
             [
                 {
-                    name: "Level Test",
-                    goto: :test_level
-                },
-                {
                     name: "Level 1",
                     goto: :level_1
                 },
@@ -36,6 +32,14 @@ module RatGame
                 {
                     name: "Level 5",
                     goto: :level_5
+                },
+                {
+                    name: "Level 6",
+                    goto: :level_6
+                },
+                {
+                    name: "Level 7",
+                    goto: :level_7
                 }
             ]
         end
