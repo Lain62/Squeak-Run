@@ -11,6 +11,7 @@ module RatGame
             Globals.state.scene.transition = SceneTransition.new
             Globals.state.scene.error = SceneError.new
             Globals.state.scene.main_menu = SceneMainMenu.new
+            Globals.state.scene.tutorial = SceneTutorial.new
         end
 
         def change_scene(val)
@@ -27,6 +28,7 @@ module RatGame
             when :level_menu then Globals.state.scene.level_menu.update
             when :transition then Globals.state.scene.transition.update
             when :main_menu then Globals.state.scene.main_menu.update
+            when :tutorial then Globals.state.scene.tutorial.update
             else
                 Globals.state.scene.error.update
             end
@@ -58,6 +60,7 @@ module RatGame
             when :level_menu then Globals.state.scene.level_menu.draw
             when :transition then Globals.state.scene.transition.draw
             when :main_menu then Globals.state.scene.main_menu.draw
+            when :tutorial then Globals.state.scene.tutorial.draw
             else
                 Globals.state.scene.error.draw
             end
