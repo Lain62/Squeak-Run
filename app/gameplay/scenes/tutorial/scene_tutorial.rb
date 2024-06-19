@@ -30,7 +30,15 @@ module RatGame
             [
                 {
                     x: 0,
-                    y: 0 + @anim_idle_frame,
+                    y: 0 ,
+                    w: 1280,
+                    h: 720,
+                    primitive_marker: :sprite,
+                    path: "content/images/tutorial.png"
+                },
+                {
+                    x: 0,
+                    y: 0 + @anim_idle_frame * 4,
                     w: 1280,
                     h: 720,
                     primitive_marker: :sprite,
