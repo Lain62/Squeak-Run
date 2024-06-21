@@ -37,6 +37,7 @@ module RatGame
                 case @current_index
                 when 1 then Globals.state.scene.manager.change_scene(:level_menu)
                 when 2 then Globals.state.scene.manager.change_scene(:tutorial)
+                when 3 then Globals.state.scene.manager.change_scene(:about)
                 when 4 then $args.gtk.request_quit
                 end
             end

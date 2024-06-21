@@ -87,7 +87,6 @@ module RatGame
 
 
         def draw
-            Globals.outputs.debug << "Index #{@current_index}"
             Globals.outputs[:batch_ui].primitives << {
                 x:0,
                 y:0,

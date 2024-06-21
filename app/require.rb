@@ -17,6 +17,8 @@ require "app/gameplay/scenes/transition/scene_transition.rb"
 
 require "app/gameplay/scenes/tutorial/scene_tutorial.rb"
 
+require "app/gameplay/scenes/about/scene_about.rb"
+
 require "app/gameplay/scenes/world/scene_world.rb"
 
 require "app/gameplay/scenes/world/background/background_world_bg.rb"
