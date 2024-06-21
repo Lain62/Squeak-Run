@@ -50,7 +50,6 @@ module RatGame
         end
 
         def update
-            # Globals.outputs.debug << "#{(252 - test).to_i}"
         end
 
         def draw

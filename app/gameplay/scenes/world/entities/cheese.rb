@@ -98,7 +98,6 @@ module RatGame
             animation_grabbing if @status == :grabbing
             
             if @status != :grabbed
-                Globals.outputs.debug << "showing"
                 Globals.outputs[:batch].sprites << self
             end
         end

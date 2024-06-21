@@ -28,6 +28,8 @@ module RatGame
             @tile_h = 16
             @flip_horizontally = false
             @spawn_point = 0
+            @coyote_timer = 0
+            @coyote_timer_max = 12
 
             # ANIMATION VARIABLES
             @animation_walk = 0
@@ -190,6 +192,22 @@ module RatGame
         # MOVEMENT
         ###########
 
+        def coyote_timer_logic
+            if !is_grounded?
+                @coyote_timer -= 1 if @coyote_timer > 0
+            end
+
+            if is_grounded?
+                @coyote_timer = @coyote_timer_max
+            end
+        end
+
+
+        def coyote_time
+            return false if @coyote_timer == 0 
+            return true
+        end
+
         def move_jump
             if Globals::Inputs.a_down && @jump_count > 0
                 Globals.outputs.sounds << "content/sounds/jump.wav"
@@ -209,7 +227,7 @@ module RatGame
         def move_gravity
             if !is_grounded? && @jump == 0
                 @gravity += 0.25 unless @gravity >= @gravity_max
-                @jump_count = 1 if @jump_count > 1
+                @jump_count = 1 if @jump_count > 1 && !coyote_time
                 @dymovement = -@gravity
             elsif is_grounded? && @jump == 0
                 @jump_count = @jump_count_max
@@ -324,6 +342,7 @@ module RatGame
         def update
             super
             return if is_dead?
+            coyote_timer_logic
             move
         end
 

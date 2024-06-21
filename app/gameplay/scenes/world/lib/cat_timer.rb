@@ -41,7 +41,6 @@ module RatGame
                 @time += @time_increase if @time < @time_max
                 reset if @time > @time_max
             end
-            Globals.outputs.debug << "#{@time}"
         end
     end
 end
