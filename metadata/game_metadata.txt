@@ -2,8 +2,8 @@
 devid=Ivulai
 devtitle=Lain62
 gameid=squeak_run_r
-gametitle=Squeak Run:R
-version=1.4
+gametitle=Squeak Run R
+version=0.6
 icon=metadata/icon3.png
 
 # === Flags available at all licensing tiers ===

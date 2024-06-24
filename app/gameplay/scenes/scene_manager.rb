@@ -24,6 +24,7 @@ module RatGame
 
         def update
             @loaded = true
+            Globals.audio[:bg_music] ||= { input: "content/sounds/mox_ost.ogg", looping: true, gain: 1.0 }
             case @current_scene
             when :world then Globals.state.scene.world.update
             when :level_menu then Globals.state.scene.level_menu.update
@@ -39,6 +40,7 @@ module RatGame
 
         def draw
             return if @loaded == false
+            
             Globals.outputs[:batch].transient!
             Globals.outputs[:batch].w = Globals.state.scene.camera.w
             Globals.outputs[:batch].h = Globals.state.scene.camera.h
