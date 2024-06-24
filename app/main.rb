@@ -25,6 +25,7 @@ module RatGame
 end
 
 def tick args
+  args.gtk.disable_console
   args.state.game ||= RatGame::Game.new()
   args.state.game.update
   args.state.game.draw
