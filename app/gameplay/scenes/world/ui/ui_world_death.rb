@@ -10,17 +10,6 @@ module RatGame
             Globals.state.scene.world.mouse
         end
 
-        def debug_text
-            {
-                x: 120,
-                y: 90,
-                text: "You died",
-                r: 255,
-                g: 255,
-                b: 255,
-                primitive_marker: :label
-            }
-        end
 
         def foreground
             {
@@ -28,9 +17,16 @@ module RatGame
                 y: 0,
                 w: 320,
                 h: 180,
-                primitive_marker: :solid
+                tile_x: 0,
+                tile_y: 0,
+                tile_w: 320,
+                tile_h: 180,
+                path: "content/images/gatoevileyes.png",
+                primitive_marker: :sprite,
             }
         end
+
+
 
         def start
             if @status == false
@@ -76,9 +72,7 @@ module RatGame
 
         def draw
             if @status == true
-                Globals.outputs[:batch_ui].primitives << foreground
-                Globals.outputs[:batch_ui].primitives << debug_text
-                
+                Globals.outputs[:batch_ui].primitives << foreground            
             end
         end
     end
