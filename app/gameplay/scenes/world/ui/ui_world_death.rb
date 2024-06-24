@@ -2,7 +2,7 @@ module RatGame
     class UiWorldDeath
         def initialize
             @timer = 0
-            @timer_max = 60
+            @timer_max = 120
             @status = false
         end
 
@@ -21,7 +21,7 @@ module RatGame
                 tile_y: 0,
                 tile_w: 320,
                 tile_h: 180,
-                path: "content/images/gatoevileyes.png",
+                path: "content/images/ratdeathscreenfull.png",
                 primitive_marker: :sprite,
             }
         end
